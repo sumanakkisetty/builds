@@ -87,6 +87,13 @@ body{min-height:100vh;overflow-x:hidden}
 .tl-body{font-size:14px;color:var(--t2);line-height:1.7}
 .where-chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
 .wchip{display:inline-flex;align-items:center;gap:6px;padding:7px 15px;border-radius:20px;font-size:13px;font-weight:500;color:var(--t2);background:var(--card);border:1px solid var(--border)}
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin:28px 0}
+.stack-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;transition:border-color 200ms}
+.stack-card:hover{border-color:var(--border2)}
+.stack-card-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;background:var(--card2);border:1px solid var(--border)}
+.stack-card-icon svg{flex-shrink:0}
+.stack-card-name{font-size:14px;font-weight:700;color:var(--t1);margin-bottom:4px}
+.stack-card-desc{font-size:12px;color:var(--t3);line-height:1.5}
 .story-cta{text-align:center;padding:56px 24px;border-top:1px solid var(--border)}
 .story-cta h3{font-size:clamp(20px,3vw,28px);font-weight:800;letter-spacing:-.025em;margin-bottom:10px}
 .story-cta p{font-size:15px;color:var(--t2);margin-bottom:28px;line-height:1.7}
@@ -155,6 +162,52 @@ body{min-height:100vh;overflow-x:hidden}
       <p class="story-p">He didn't set out to build software without a proper workstation. It just turned out that way. The laptop was there when it was there. But a lot of the time it wasn't, and waiting for it to be there wasn't something he was willing to do.</p>
       <p class="story-p">So features got written on the couch, on walks, during commutes, right before sleep. An AI handled the heavy lifting as a coding partner, which meant it was possible to make real progress without a full setup in front of you. A small cloud server, a lean stack, and nothing that tied him to a specific location.</p>
       <p class="story-p">On a trip to Toronto he shipped SSL certificates for a new domain, wrote the product documentation, and wired up an automated install wizard, all from a mobile browser with no laptop in the bag. That's just how the workflow ended up working.</p>
+
+      <div class="stack-grid">
+        <div class="stack-card">
+          <div class="stack-card-icon" style="background:rgba(124,58,237,.12);border-color:rgba(124,58,237,.25)">
+            <svg width="18" height="18" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <div class="stack-card-name">Claude (Anthropic)</div>
+          <div class="stack-card-desc">AI co-developer. Writes code, reviews architecture, catches bugs, explains tradeoffs — at any hour.</div>
+        </div>
+        <div class="stack-card">
+          <div class="stack-card-icon" style="background:rgba(14,165,233,.12);border-color:rgba(14,165,233,.25)">
+            <svg width="18" height="18" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+          </div>
+          <div class="stack-card-name">Cloud Free Tier Server</div>
+          <div class="stack-card-desc">2-core CPU, 1 GB RAM micro instance. The entire product was built and runs on this. No expensive infrastructure needed.</div>
+        </div>
+        <div class="stack-card">
+          <div class="stack-card-icon" style="background:rgba(6,182,212,.12);border-color:rgba(6,182,212,.25)">
+            <svg width="18" height="18" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="stack-card-name">Go (Golang)</div>
+          <div class="stack-card-desc">Fast, compiled, single binary. One file to deploy. No runtime dependencies.</div>
+        </div>
+        <div class="stack-card">
+          <div class="stack-card-icon" style="background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.25)">
+            <svg width="18" height="18" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <div class="stack-card-name">MongoDB</div>
+          <div class="stack-card-desc">Flexible schema that moves as fast as the product does. No migrations for every new feature.</div>
+        </div>
+        <div class="stack-card">
+          <div class="stack-card-icon" style="background:rgba(79,70,229,.12);border-color:rgba(79,70,229,.25)">
+            <svg width="18" height="18" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8L2 7h20l-6-4z"/></svg>
+          </div>
+          <div class="stack-card-name">Docker</div>
+          <div class="stack-card-desc">Reproducible deploys. Spin up anywhere. One compose file for the full stack.</div>
+        </div>
+        <div class="stack-card">
+          <div class="stack-card-icon" style="background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.25);gap:6px">
+            <svg width="14" height="14" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            <svg width="14" height="14" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M1 21h22"/></svg>
+          </div>
+          <div class="stack-card-name">Browser</div>
+          <div class="stack-card-desc">The "IDE" most of this was built in. Mobile or laptop. No special hardware required.</div>
+        </div>
+      </div>
 
       <div class="where-chips">
         <span class="wchip"><svg width="13" height="13" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M1 21h22"/></svg>Laptop</span>
