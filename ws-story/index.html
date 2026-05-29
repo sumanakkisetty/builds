@@ -236,10 +236,8 @@ body{min-height:100vh;overflow-x:hidden}
       <div class="section-label">The Inflection Point</div>
       <h2 class="section-h">18x faster. Overnight.</h2>
       <p class="story-p">The first four months were slow. Local machine, standard setup, 53 commits across November through February. Real progress, but grinding.</p>
-      <p class="story-p">Then in March 2026 a thought crossed his mind that seemed almost too simple to take seriously. He was sitting with the frustration of needing to be at a specific machine to do anything real. And he thought, what if the machine wasn't his? What if the entire development environment, the compiler, the AI, the server, the logs, all of it, lived in the cloud, and the only thing he needed locally was a browser tab? He had never heard anyone describe building production software this way. It wasn't in any tutorial. Nobody had told him it was the right approach. It just seemed like it might work. That instinct turned out to be the most important technical decision of the whole project.</p>
-      <p class="story-p">Something changed. He moved the entire development environment to a cloud VM and set the AI coding partner to run there persistently, always on, always in context, accessible from any browser anywhere in the world. No IDE to install. No local environment to configure. No machine to be tied to. The whole stack lived in the cloud: code, builds, deployments, logs. The only thing on his end was a browser window. To an outside observer it would have looked like someone doing email. What was actually happening was production software being shipped in real time.</p>
-      <p class="story-p">It was also running on a 1 GB server. Not because of some philosophical commitment to constraints, but because that's what was available for free. The security had to be tight: triple-gated admin access, encrypted credentials, rate limiting, org-level data isolation on every query. The kind of setup that normally takes a security team. Built by one person, verified by one AI, running on hardware most developers wouldn't consider seriously.</p>
-      <p class="story-p">There was another constraint that never made it into the commit log. Tokens. Every AI session has a limit, and he was hitting it constantly. He learned to work smarter inside those limits, to front-load the important decisions, to compress context without losing it. He also knew this couldn't go on indefinitely. Real commitments, real life. The clock was always running. That pressure is in every commit from March onwards.</p>
+      <p class="story-p">Then in March 2026 a thought crossed his mind that seemed almost too simple to take seriously. What if the entire development environment, the compiler, the AI, the server, the logs, all of it, lived in the cloud, and the only thing he needed locally was a browser tab? He had never heard anyone describe building production software this way. It wasn't in any tutorial. It just seemed like it might work. That instinct turned out to be the most important technical decision of the whole project. The security had to be tight: triple-gated admin access, encrypted credentials, rate limiting, org-level data isolation on every query. The kind of setup that normally takes a security team. Built by one person, verified by one AI, running on hardware most developers wouldn't consider seriously.</p>
+      <p class="story-p">There was one more constraint that never made it into the commit log. Every AI session has a token limit, and he was hitting it constantly. He learned to front-load the important decisions, compress context without losing it, and work smarter inside those limits. He also knew this couldn't go on indefinitely. Real commitments, real life. The clock was always running. That pressure is in every commit from March onwards.</p>
       <p class="story-p">The numbers show what happened next:</p>
 
       <table class="vel-table">
@@ -263,9 +261,7 @@ body{min-height:100vh;overflow-x:hidden}
     <div class="section">
       <div class="section-label">The AI Partner</div>
       <h2 class="section-h">Not autocomplete. A real collaborator.</h2>
-      <p class="story-p">People hear "built with AI" and picture someone typing prompts and copying answers. That's not what happened here.</p>
-      <p class="story-p">The AI held full context of the entire codebase across every session. It knew the decisions made three weeks ago and why. It flagged security gaps before they became problems, pushed back on features that didn't make sense, and ran the whole pipeline from writing code through to deployment and notification. It didn't need to be told the same things twice.</p>
-      <p class="story-p">Suman's job became deciding what to build and in what order, reviewing the work, and making the calls. That's a genuinely different way of working than anything that existed a few years ago.</p>
+      <p class="story-p">People hear "built with AI" and picture someone typing prompts and copying answers. That's not what happened here. The AI held full context of the entire codebase across every session: decisions made three weeks ago, architectural tradeoffs, security gaps, things that didn't make sense. It flagged problems before they landed in production and pushed back when something was wrong. Suman's job became deciding what to build and in what order. That's a genuinely different way of working than anything that existed a few years ago.</p>
     </div>
 
     <div class="pull-quote">
@@ -330,7 +326,8 @@ body{min-height:100vh;overflow-x:hidden}
   <div class="story-cta-divider"></div>
   <div class="story-cta">
     <h3>Beta version reveals June 11, 2026.</h3>
-    <p>Six months. One person. An AI.<br>A problem worth solving.</p>
+    <p>You know how it was built.<br>Follow along to see what it does.</p>
+    <p>A problem worth solving.</p>
     <div class="cta-row">
       <a href="https://www.linkedin.com/in/sumanakkisetty" target="_blank" rel="noopener" class="btn-ghost">
         <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
