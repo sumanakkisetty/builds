@@ -4,16 +4,15 @@
 <script>(function(){var t=localStorage.getItem('sb-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Built at 40 — A Solo Builder's Story</title>
-<meta name="description" content="An arts student. Two decades in enterprise tech. One recurring dream. At 40, he finally built it — alone, from a phone, on free infrastructure, with an AI.">
+<title>Built at 40: A Solo Builder's Story</title>
+<meta name="description" content="An arts student from a small town in India. Twenty years in enterprise tech. One idea he couldn't shake. At 40, he finally built it, alone, from his phone, with an AI.">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Built at 40 — A Solo Builder's Story">
-<meta property="og:description" content="An arts student. Two decades in enterprise tech. One recurring dream. At 40, he finally built it — alone, from a phone, on free infrastructure, with an AI.">
-<meta property="og:image" content="https://sumanakkisetty.github.io/builds/ws-story/og.png">
+<meta property="og:title" content="Built at 40: A Solo Builder's Story">
+<meta property="og:description" content="An arts student from a small town in India. Twenty years in enterprise tech. One idea he couldn't shake. At 40, he finally built it.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Built at 40 — A Solo Builder's Story">
-<meta name="twitter:description" content="An arts student. Two decades in enterprise tech. One recurring dream. At 40, he finally built it.">
+<meta name="twitter:title" content="Built at 40: A Solo Builder's Story">
+<meta name="twitter:description" content="Twenty years in enterprise tech. One idea he couldn't shake. At 40, he built it alone.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%234f46e5'/><text x='50' y='70' font-size='60' font-weight='bold' text-anchor='middle' fill='white' font-family='system-ui,sans-serif'>S</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,8 +34,6 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--bg);color:var(--t1);font-family:'Inter',system-ui,sans-serif;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{min-height:100vh;overflow-x:hidden}
-
-/* ── Nav ── */
 .nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 28px;border-bottom:1px solid var(--border);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(8,9,15,.82)}
 [data-theme="light"] .nav{background:rgba(244,245,250,.88)}
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--t1)}
@@ -49,55 +46,37 @@ body{min-height:100vh;overflow-x:hidden}
 [data-theme="light"] .icon-moon{display:block}
 [data-theme="light"] .icon-sun{display:none}
 .theme-transitioning,.theme-transitioning *,.theme-transitioning *::before,.theme-transitioning *::after{transition:background-color 500ms cubic-bezier(.4,0,.2,1),background 500ms cubic-bezier(.4,0,.2,1),color 500ms cubic-bezier(.4,0,.2,1),border-color 500ms cubic-bezier(.4,0,.2,1),box-shadow 500ms cubic-bezier(.4,0,.2,1),fill 500ms cubic-bezier(.4,0,.2,1),stroke 500ms cubic-bezier(.4,0,.2,1),opacity 500ms cubic-bezier(.4,0,.2,1) !important;transition-delay:0ms !important}
-
-/* ── Orbs ── */
 .orb{position:fixed;border-radius:50%;filter:blur(140px);pointer-events:none;z-index:0}
 .orb1{width:600px;height:600px;background:var(--violet);top:-200px;left:-150px;opacity:.1}
 .orb2{width:400px;height:400px;background:var(--indigo);bottom:-100px;right:-100px;opacity:.08}
 [data-theme="light"] .orb1{opacity:.04}
 [data-theme="light"] .orb2{opacity:.03}
-
-/* ── Page ── */
 .page{position:relative;z-index:1;padding-top:var(--nav-h)}
-
-/* ── Hero ── */
 .hero{max-width:760px;margin:0 auto;padding:80px 24px 56px;text-align:center}
 .hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:20px}
 .hero-h1{font-size:clamp(36px,6vw,64px);font-weight:900;letter-spacing:-.04em;line-height:1.05;margin-bottom:24px;background:linear-gradient(135deg,var(--t1) 50%,var(--t2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-sub{font-size:clamp(15px,1.8vw,19px);color:var(--t2);line-height:1.7;max-width:620px;margin:0 auto}
-
-/* ── Divider ── */
 .divider{width:48px;height:3px;background:linear-gradient(90deg,var(--indigo),var(--violet));border-radius:99px;margin:48px auto}
-
-/* ── Body ── */
 .body{max-width:720px;margin:0 auto;padding:0 24px 80px}
 .section{margin-bottom:64px}
 .section-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:10px}
 .section-h{font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.025em;line-height:1.2;margin-bottom:20px;color:var(--t1)}
 .story-p{font-size:16px;color:var(--t2);line-height:1.8;margin-bottom:18px}
 .story-p:last-child{margin-bottom:0}
-
-/* ── Pull quote ── */
 .pull-quote{margin:40px 0;padding:28px 32px;border-left:3px solid var(--violet);background:var(--card);border-radius:0 14px 14px 0;font-size:17px;font-style:italic;color:var(--t1);line-height:1.7}
 .pull-quote cite{display:block;margin-top:14px;font-size:13px;font-style:normal;font-weight:700;color:var(--t3)}
 [data-theme="light"] .pull-quote{background:var(--card2)}
-
-/* ── Velocity table ── */
 .vel-table{width:100%;border-collapse:collapse;margin:28px 0;font-size:14px}
 .vel-table th{text-align:left;padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--t3);border-bottom:1px solid var(--border)}
 .vel-table td{padding:12px 14px;color:var(--t2);border-bottom:1px solid var(--border)}
 .vel-table tr:last-child td{border-bottom:none}
 .vel-table .highlight td{color:var(--t1);font-weight:700;background:rgba(79,70,229,.08)}
 .vel-table .highlight td:first-child{border-left:3px solid var(--indigo)}
-
-/* ── Build numbers ── */
 .build-numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin:40px 0}
 .bn-cell{background:var(--card);padding:24px 12px;text-align:center}
 .bn-num{font-size:clamp(20px,3vw,30px);font-weight:900;letter-spacing:-.03em;line-height:1;background:linear-gradient(135deg,#818cf8,#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px}
 .bn-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--t3)}
 [data-theme="dark"] .bn-num{background:linear-gradient(135deg,#ffffff,#888888);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-
-/* ── Timeline ── */
 .timeline{position:relative;margin:40px 0;padding-left:28px}
 .timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--indigo),var(--violet),transparent)}
 .tl-item{position:relative;margin-bottom:32px}
@@ -106,12 +85,8 @@ body{min-height:100vh;overflow-x:hidden}
 .tl-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--violet);margin-bottom:4px}
 .tl-title{font-size:16px;font-weight:700;color:var(--t1);margin-bottom:6px}
 .tl-body{font-size:14px;color:var(--t2);line-height:1.7}
-
-/* ── Where chips ── */
 .where-chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
 .wchip{display:inline-flex;align-items:center;gap:6px;padding:7px 15px;border-radius:20px;font-size:13px;font-weight:500;color:var(--t2);background:var(--card);border:1px solid var(--border)}
-
-/* ── CTA ── */
 .story-cta{text-align:center;padding:56px 24px;border-top:1px solid var(--border)}
 .story-cta h3{font-size:clamp(20px,3vw,28px);font-weight:800;letter-spacing:-.025em;margin-bottom:10px}
 .story-cta p{font-size:15px;color:var(--t2);margin-bottom:28px;line-height:1.7}
@@ -120,11 +95,7 @@ body{min-height:100vh;overflow-x:hidden}
 .btn-primary:hover{opacity:.88}
 .btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;background:var(--card2);color:var(--t1);font-size:14px;font-weight:700;border-radius:10px;text-decoration:none;border:1px solid var(--border2);transition:border-color 150ms}
 .btn-ghost:hover{border-color:var(--indigo)}
-
-/* ── Footer ── */
 .footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);font-size:13px;color:var(--t3)}
-
-/* ── Mobile ── */
 @media(max-width:640px){
   .nav{padding:0 16px}
   .hero{padding:56px 20px 40px}
@@ -139,10 +110,8 @@ body{min-height:100vh;overflow-x:hidden}
 </style>
 </head>
 <body>
-
 <div class="orb orb1"></div>
 <div class="orb orb2"></div>
-
 <nav class="nav">
   <div class="nav-brand">
     <div class="nav-mark">S</div>
@@ -156,45 +125,41 @@ body{min-height:100vh;overflow-x:hidden}
 
 <div class="page">
 
-  <!-- Hero -->
   <div class="hero">
     <div class="hero-eyebrow">The Builder's Story</div>
     <h1 class="hero-h1">One person.<br>Any device.<br>An AI.</h1>
-    <p class="hero-sub">How a solo founder — with no team, no funding, no desk requirement — built a production enterprise platform from scratch in 6 months. And why it took 20 years to get here.</p>
+    <p class="hero-sub">No team, no funding, no office. Just a clear problem, a phone, and 20 years of wanting to build something. This is how it finally happened.</p>
   </div>
 
   <div class="divider"></div>
 
   <div class="body">
 
-    <!-- Chapter 1: The Human -->
     <div class="section">
       <div class="section-label">The Human Story</div>
-      <h2 class="section-h">He was not supposed to build this.</h2>
-      <p class="story-p">Suman Akkisetty is not who you would expect to build an enterprise software platform.</p>
-      <p class="story-p">He grew up in a small town in India — an arts student, not a computer science graduate, not an engineering student. Computers were a subject, not a major. But from the moment he first saw a system respond to code in grade 12, something clicked that never let go. He taught himself. He showed up to the IT industry on passion alone, and built a career spanning two decades at some of the world's largest technology firms.</p>
-      <p class="story-p">For twenty years, while working full-time, he carried a vision. Not a vague idea — a specific, recurring dream of building a product that would touch millions of people and solve a real problem he kept running into everywhere he worked. He attempted it before. Multiple times. Each attempt failed. The seed didn't die.</p>
-      <p class="story-p">At 40 years old, with two decades of industry experience and the arrival of capable AI, he finally had everything he needed. Not a team. Not funding. Not a MacBook and a standing desk. Just the accumulated weight of twenty years of wanting to build something, a phone, an internet connection, and a clear vision of what the world needed.</p>
+      <h2 class="section-h">Nobody saw this coming. Including him.</h2>
+      <p class="story-p">Suman Akkisetty grew up in a small town in India as an arts student. Not computer science, not engineering. Computers were just another subject on the timetable. But something happened in grade 12 when he first saw a machine respond to code he typed. He couldn't explain it. He just knew he wanted more of that feeling.</p>
+      <p class="story-p">He taught himself everything. Got into the IT industry on passion rather than a degree, and spent the next two decades working at some of the biggest technology firms in the world.</p>
+      <p class="story-p">The whole time, there was this idea in the back of his head. Not vague, not just a "someday" thought. A specific problem he kept seeing everywhere he worked. He tried building something about it a few times over the years. Nothing stuck. Life got in the way. But the idea never went away.</p>
+      <p class="story-p">At 40, with twenty years of experience and AI finally capable enough to make this possible, he decided to actually do it. No co-founder, no investment, no standing desk. Just a phone, a cloud server, and the stubborn refusal to let the idea die again.</p>
     </div>
 
     <div class="pull-quote">
-      "I wasn't trying to start a company. I was trying to solve a problem I kept running into everywhere I worked. And I figured — with AI this capable — maybe I could just build the thing myself."
-      <cite>Suman Akkisetty — Founder &amp; Architect</cite>
+      "I wasn't trying to start a company. I kept running into the same problem everywhere I worked and at some point I just thought, why not build it myself?"
+      <cite>Suman Akkisetty, Builder and Architect</cite>
     </div>
 
-    <!-- Chapter 2: The Setup -->
     <div class="section">
       <div class="section-label">The Setup</div>
-      <h2 class="section-h">The desk was optional.</h2>
-      <p class="story-p">Most software is built at a desk. Fixed hours, fixed location, fixed machine. Suman's approach was different — not because he abandoned the laptop, but because he refused to be chained to it.</p>
-      <p class="story-p">The laptop was always there when needed. But so was the phone — on the couch, mid-walk, on a commute, right before sleep. Wherever a window of time opened up, features got shipped. An AI handled the heavy lifting as a co-developer, making it possible to move fast without a full environment set up in front of you. A lean self-hosted cloud stack, chosen to be fast to iterate on from anywhere.</p>
-      <p class="story-p">On a recent trip to Toronto, he shipped SSL certificates for a new domain, wrote full product documentation, and wired up an automated setup wizard — all from a mobile browser, no laptop on the trip. That's not a hack. That's the workflow.</p>
+      <h2 class="section-h">The desk was never required.</h2>
+      <p class="story-p">He didn't set out to build software without a proper workstation. It just turned out that way. The laptop was there when it was there. But a lot of the time it wasn't, and waiting for it to be there wasn't something he was willing to do.</p>
+      <p class="story-p">So features got written on the couch, on walks, during commutes, right before sleep. An AI handled the heavy lifting as a coding partner, which meant it was possible to make real progress without a full setup in front of you. A small cloud server, a lean stack, and nothing that tied him to a specific location.</p>
+      <p class="story-p">On a trip to Toronto he shipped SSL certificates for a new domain, wrote the product documentation, and wired up an automated install wizard, all from a mobile browser with no laptop in the bag. That's just how the workflow ended up working.</p>
 
       <div class="where-chips">
         <span class="wchip"><svg width="13" height="13" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M1 21h22"/></svg>Laptop</span>
         <span class="wchip"><svg width="13" height="13" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Phone</span>
         <span class="wchip"><svg width="13" height="13" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>At home</span>
-        <span class="wchip"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.99994 1.5C9.99994 2.32843 9.32837 3 8.49994 3C7.67151 3 6.99994 2.32843 6.99994 1.5C6.99994 0.671573 7.67151 0 8.49994 0C9.32837 0 9.99994 0.671573 9.99994 1.5Z" fill="#f59e0b"/><path d="M2.8312 5.45056C3.07651 4.59195 3.86128 4 4.75424 4H7.73601L10.5455 5.40474L12.6286 4.57152L13.3713 6.42848L11.2883 7.2617C10.7579 7.47386 10.162 7.44908 9.65107 7.1936L9.50107 7.1186L8.96631 9.2576L9.83834 9.75591C10.6163 10.2005 11.0037 11.1082 10.7864 11.9775L9.78072 16H7.71917L8.84607 11.4924L7.14993 10.5232L5.78072 16H3.71917L6.21917 6H4.75424L4.18281 8H2.10278L2.8312 5.45056Z" fill="#f59e0b"/></svg>On a walk</span>
         <span class="wchip"><svg width="13" height="13" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>Going to bed</span>
         <span class="wchip"><svg width="13" height="13" fill="none" stroke="#f43f5e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>Shopping</span>
         <span class="wchip"><svg width="13" height="13" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 7l6-3 6 3 6-3v13l-6 3-6-3-6 3V7"/><line x1="9" y1="4" x2="9" y2="17"/><line x1="15" y1="7" x2="15" y2="20"/></svg>Travelling</span>
@@ -202,12 +167,11 @@ body{min-height:100vh;overflow-x:hidden}
       </div>
     </div>
 
-    <!-- Chapter 3: The Inflection Point -->
     <div class="section">
       <div class="section-label">The Inflection Point</div>
-      <h2 class="section-h">18× faster overnight.</h2>
-      <p class="story-p">The project began on a local machine in November 2025. Standard setup — Go backend, local database, local IDE. Progress was real but slow: 53 commits over 4 months, tethered to a desk.</p>
-      <p class="story-p">In March 2026, the entire development workflow moved to the cloud. An AI co-developer ran persistently on a remote server, accessible from any device. The desk stopped being a requirement. The numbers speak for themselves:</p>
+      <h2 class="section-h">18x faster. Overnight.</h2>
+      <p class="story-p">The first four months were slow. Local machine, standard setup, 53 commits across November through February. Real progress, but grinding.</p>
+      <p class="story-p">In March 2026 he moved everything to a cloud VM and set up the AI coding partner to run persistently on it, accessible from any device. The commit numbers tell the rest of the story:</p>
 
       <table class="vel-table">
         <thead>
@@ -218,33 +182,31 @@ body{min-height:100vh;overflow-x:hidden}
           <tr><td>Dec 2025</td><td>3</td><td>Local machine</td></tr>
           <tr><td>Jan 2026</td><td>12</td><td>Local machine</td></tr>
           <tr><td>Feb 2026</td><td>24</td><td>Local machine</td></tr>
-          <tr class="highlight"><td>Mar 2026</td><td>438</td><td>Cloud VM + AI — the shift</td></tr>
+          <tr class="highlight"><td>Mar 2026</td><td>438</td><td>Cloud VM + AI</td></tr>
           <tr><td>Apr 2026</td><td>428</td><td>Cloud VM + AI</td></tr>
         </tbody>
       </table>
 
-      <p class="story-p">438 commits in a single month. An 18× jump in velocity — not because of more hours, but because location stopped mattering. The question asked was simple: <em>what is the minimum needed to write and ship production code?</em> The answer: a browser and an internet connection.</p>
+      <p class="story-p">438 commits in one month. The work didn't get easier. It's just that location stopped being an obstacle. You don't need a workstation to write production software. Turns out you need a browser and a decent internet connection.</p>
     </div>
 
-    <!-- Chapter 4: The AI -->
     <div class="section">
       <div class="section-label">The AI Partner</div>
-      <h2 class="section-h">This is not autocomplete.</h2>
-      <p class="story-p">In a traditional team, a senior engineer owns the full delivery lifecycle — they understand the codebase, write the code, run the tests, catch regressions, deploy, monitor, and document. That role requires years of context about the product.</p>
-      <p class="story-p">In this setup, the AI is that senior engineer. It holds the full context of every module, every architectural decision, every past bug, every pending task — across sessions, across weeks, across the entire history of the build. It doesn't just write code when asked. It proactively flags security issues, questions redundant features before building them, maintains structured session logs, and operates the full pipeline from commit to deploy to notification.</p>
-      <p class="story-p">The developer's role shifted from <em>doing the work</em> to <em>directing the work</em> — reviewing decisions, setting priorities, approving actions. That is a fundamentally different relationship between a human and a machine than anything that existed before large language models.</p>
+      <h2 class="section-h">Not autocomplete. A real collaborator.</h2>
+      <p class="story-p">People hear "built with AI" and picture someone typing prompts and copying answers. That's not what happened here.</p>
+      <p class="story-p">The AI held full context of the entire codebase across every session. It knew the decisions made three weeks ago and why. It flagged security gaps before they became problems, pushed back on features that didn't make sense, and ran the whole pipeline from writing code through to deployment and notification. It didn't need to be told the same things twice.</p>
+      <p class="story-p">Suman's job became deciding what to build and in what order, reviewing the work, and making the calls. That's a genuinely different way of working than anything that existed a few years ago.</p>
     </div>
 
     <div class="pull-quote">
-      "The most remarkable thing is not the technology. It is the stubbornness of the vision."
-      <cite>— 20 years in the making</cite>
+      "Twenty years of trying to find the right moment. Turns out the moment was always going to be when the tools finally caught up."
+      <cite>Suman Akkisetty</cite>
     </div>
 
-    <!-- Chapter 5: The Numbers -->
     <div class="section">
       <div class="section-label">The Numbers</div>
-      <h2 class="section-h">What 6 months looks like.</h2>
-      <p class="story-p">A production enterprise platform — built by one person, on free infrastructure, from wherever life happened to be. Not a prototype. Not a demo. Production-grade, fully deployed.</p>
+      <h2 class="section-h">What 6 months actually looks like.</h2>
+      <p class="story-p">A full production enterprise platform, built by one person on free cloud infrastructure, shipped from wherever he happened to be. Not a demo, not an MVP in the loose sense of the word. Production-grade and fully deployed.</p>
 
       <div class="build-numbers">
         <div class="bn-cell">
@@ -269,36 +231,35 @@ body{min-height:100vh;overflow-x:hidden}
         <div class="tl-item">
           <div class="tl-dot"></div>
           <div class="tl-label">Nov 2025</div>
-          <div class="tl-title">Day one — a local machine and a clear problem</div>
-          <div class="tl-body">Auth, users, core shell. The foundation. Slow but deliberate.</div>
+          <div class="tl-title">Day one on a local machine</div>
+          <div class="tl-body">Auth, users, the core shell. Slow going but the foundation was solid.</div>
         </div>
         <div class="tl-item">
           <div class="tl-dot"></div>
           <div class="tl-label">Mar 2026</div>
-          <div class="tl-title">The inflection point — 438 commits in 31 days</div>
-          <div class="tl-body">Cloud VM + AI co-developer. Velocity jumped 18×. The desk became optional.</div>
+          <div class="tl-title">The shift: 438 commits in 31 days</div>
+          <div class="tl-body">Cloud VM and AI partner. Velocity jumped 18x. The desk stopped being part of the equation.</div>
         </div>
         <div class="tl-item">
           <div class="tl-dot"></div>
-          <div class="tl-label">Apr–May 2026</div>
-          <div class="tl-title">Full platform — 15 enterprise modules shipped</div>
-          <div class="tl-body">Email server, AI layer, real-time chat, incident management, knowledge base, projects — all of it. From a laptop and a phone.</div>
+          <div class="tl-label">Apr to May 2026</div>
+          <div class="tl-title">15 enterprise modules shipped</div>
+          <div class="tl-body">Email server, AI layer, real-time chat, incident management, knowledge base, projects. All of it, from a laptop and a phone.</div>
         </div>
         <div class="tl-item">
           <div class="tl-dot"></div>
           <div class="tl-label">May 2026</div>
-          <div class="tl-title">Production-ready. The reveal is coming.</div>
-          <div class="tl-body">Built at 40. Alone. On free infrastructure. From a browser. The product launches June 11.</div>
+          <div class="tl-title">Production ready. The reveal is coming.</div>
+          <div class="tl-body">Built at 40. Solo. On free infrastructure. From a browser. Launches June 11.</div>
         </div>
       </div>
     </div>
 
   </div>
 
-  <!-- CTA -->
   <div class="story-cta">
     <h3>The product reveals June 11.</h3>
-    <p>Six months. One person. An AI. A clear problem.<br>Follow the story as it unfolds — the next post drops in 2 days.</p>
+    <p>Six months. One person. An AI. A problem worth solving.<br>Follow along as the story comes out.</p>
     <div class="cta-row">
       <a href="https://www.linkedin.com/in/sumanakkisetty" target="_blank" rel="noopener" class="btn-primary">
         <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -312,8 +273,8 @@ body{min-height:100vh;overflow-x:hidden}
   </div>
 
   <footer class="footer">
-    Built at 40. Alone. On free infrastructure. From a browser.<br>
-    <span style="margin-top:8px;display:inline-block">© 2026 Suman Akkisetty</span>
+    Built at 40. Solo. On free infrastructure. From a browser.<br>
+    <span style="margin-top:8px;display:inline-block">&copy; 2026 Suman Akkisetty</span>
   </footer>
 
 </div>
