@@ -77,6 +77,13 @@ body{min-height:100vh;overflow-x:hidden}
 .bn-num{font-size:clamp(18px,2.8vw,30px);font-weight:900;letter-spacing:-.03em;line-height:1;white-space:nowrap;background:linear-gradient(135deg,#4338ca,#0891b2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px}
 .bn-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--t3)}
 [data-theme="dark"] .bn-num{background:linear-gradient(135deg,#c7d2fe,#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.night-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:28px 0}
+.ns-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 12px;text-align:center}
+.ns-num{font-size:clamp(26px,3.5vw,38px);font-weight:900;letter-spacing:-.04em;line-height:1;color:var(--t1);margin-bottom:6px}
+.ns-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);line-height:1.5}
+.hours-highlight{background:var(--card);border-left:3px solid var(--indigo);border-radius:0 10px 10px 0;padding:16px 20px;margin:24px 0;font-size:14px;color:var(--t2);line-height:1.7}
+.hours-highlight strong{color:var(--t1)}
+@media(max-width:600px){.night-stats{grid-template-columns:repeat(2,1fr)}}
 .timeline{position:relative;margin:40px 0;padding-left:28px}
 .timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--indigo),var(--violet),transparent)}
 .tl-item{position:relative;margin-bottom:32px}
@@ -276,19 +283,19 @@ body{min-height:100vh;overflow-x:hidden}
 
       <div class="build-numbers">
         <div class="bn-cell">
-          <div class="bn-num">1,481+</div>
+          <div class="bn-num">1,507</div>
           <div class="bn-lbl">Commits</div>
         </div>
         <div class="bn-cell">
-          <div class="bn-num">300 hrs+</div>
+          <div class="bn-num">300+ hrs</div>
           <div class="bn-lbl">AI pair programming</div>
         </div>
         <div class="bn-cell">
-          <div class="bn-num">517+</div>
+          <div class="bn-num">525</div>
           <div class="bn-lbl">AI sessions</div>
         </div>
         <div class="bn-cell">
-          <div class="bn-num">96+</div>
+          <div class="bn-num">98</div>
           <div class="bn-lbl">Active build days</div>
         </div>
       </div>
@@ -319,6 +326,38 @@ body{min-height:100vh;overflow-x:hidden}
           <div class="tl-body">Solo. On free infrastructure. From a browser.</div>
         </div>
       </div>
+    </div>
+
+    <!-- The Hours -->
+    <div class="section" style="margin-top:48px">
+      <div class="section-label">The Hours</div>
+      <h2 class="section-h">This was built at night.</h2>
+      <p class="story-p">Suman held a full-time job throughout the entire build. Every commit in this repository was pushed in the evenings, through the night, and across weekends — while the working day belonged to someone else. There was no sabbatical. No runway. No "building full-time." Just the hours that were left over, used completely.</p>
+
+      <div class="night-stats">
+        <div class="ns-card">
+          <div class="ns-num">71</div>
+          <div class="ns-lbl">Nights past midnight</div>
+        </div>
+        <div class="ns-card">
+          <div class="ns-num">35</div>
+          <div class="ns-lbl">Consecutive days — longest streak</div>
+        </div>
+        <div class="ns-card">
+          <div class="ns-num">531</div>
+          <div class="ns-lbl">Commits after midnight</div>
+        </div>
+        <div class="ns-card">
+          <div class="ns-num">498</div>
+          <div class="ns-lbl">Weekend commits</div>
+        </div>
+      </div>
+
+      <div class="hours-highlight">
+        <strong>3am was the most productive hour of the build.</strong> 196 commits were pushed between 3am and 4am — the time when the house was quiet, the phone was silent, and the only thing left to do was write code. On 67 separate nights, the last commit was logged somewhere between 1am and 4am.
+      </div>
+
+      <p class="story-p">March 17 to April 20, 2026: 35 days without missing a single day of commits. From March onwards, not a single weekend was skipped — every Saturday and Sunday through to launch had code shipped. A full-time job during the day. A platform being built at night. The streak was not planned — it was just what happened when the problem mattered enough.</p>
     </div>
 
   </div>
