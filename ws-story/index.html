@@ -57,12 +57,24 @@ body{min-height:100vh;overflow-x:hidden}
 .hero-h1{font-size:clamp(28px,4.5vw,48px);font-weight:900;letter-spacing:-.04em;line-height:1.05;margin-bottom:0;background:linear-gradient(135deg,var(--t1) 50%,var(--t2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-sub{font-size:clamp(15px,1.8vw,19px);color:var(--t2);line-height:1.7;max-width:620px;margin:0 auto}
 .divider{width:48px;height:3px;background:linear-gradient(90deg,var(--indigo),var(--violet));border-radius:99px;margin:20px auto}
-.body{max-width:720px;margin:0 auto;padding:32px 24px 48px}
+
+/* ── Body layout ── */
+.body{max-width:1100px;margin:0 auto;padding:32px 24px 48px;display:grid;grid-template-columns:172px 1fr;gap:56px;align-items:start}
+.body-content{min-width:0}
 .section{margin-bottom:48px}
 .section-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:10px}
 .section-h{font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.025em;line-height:1.2;margin-bottom:20px;color:var(--t1)}
 .story-p{font-size:16px;color:var(--t2);line-height:1.8;margin-bottom:18px}
 .story-p:last-child{margin-bottom:0}
+
+/* ── Sidebar nav ── */
+.body-sidebar{position:sticky;top:calc(var(--nav-h) + 28px);display:flex;flex-direction:column;gap:2px}
+.sidebar-heading{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);margin-bottom:10px;padding-left:10px}
+.sidebar-link{font-size:13px;font-weight:500;color:var(--t3);text-decoration:none;padding:6px 10px;border-radius:7px;border-left:2px solid transparent;display:block;line-height:1.4;transition:color 150ms,background 150ms,border-left-color 150ms}
+.sidebar-link:hover{color:var(--t2);background:var(--card2);border-left-color:var(--border2)}
+.sidebar-link.active{color:var(--violet);border-left-color:var(--violet);background:rgba(124,58,237,.08)}
+[data-theme="dark"] .sidebar-link.active{background:rgba(124,58,237,.18);color:rgba(255,255,255,.88)}
+
 .pull-quote{margin:40px 0;padding:28px 32px;border-left:3px solid var(--violet);background:var(--card);border-radius:0 14px 14px 0;font-size:17px;font-style:italic;color:var(--t1);line-height:1.7}
 .pull-quote cite{display:block;margin-top:14px;font-size:13px;font-style:normal;font-weight:700;color:var(--t3)}
 [data-theme="light"] .pull-quote{background:var(--card2)}
@@ -113,6 +125,12 @@ body{min-height:100vh;overflow-x:hidden}
 [data-theme="dark"] .btn-ghost{background:rgba(124,58,237,.22);color:rgba(255,255,255,.82);border-color:rgba(124,58,237,.55)}
 [data-theme="dark"] .btn-ghost:hover{background:rgba(124,58,237,.35);border-color:var(--violet)}
 .footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);font-size:13px;color:var(--t3)}
+
+/* ── Responsive ── */
+@media(max-width:900px){
+  .body{grid-template-columns:1fr;padding:32px 24px 48px}
+  .body-sidebar{display:none}
+}
 @media(max-width:640px){
   .nav{padding:0 16px}
   .hero{padding:28px 20px 16px}
@@ -157,7 +175,20 @@ body{min-height:100vh;overflow-x:hidden}
 
   <div class="body">
 
-    <div class="section">
+    <!-- Sidebar navigation -->
+    <nav class="body-sidebar" aria-label="Page sections">
+      <div class="sidebar-heading">On this page</div>
+      <a href="#s-story" class="sidebar-link">The Story</a>
+      <a href="#s-setup" class="sidebar-link">The Setup</a>
+      <a href="#s-shift" class="sidebar-link">18x Faster</a>
+      <a href="#s-hours" class="sidebar-link">The Hours</a>
+      <a href="#s-numbers" class="sidebar-link">The Numbers</a>
+    </nav>
+
+    <!-- Main content -->
+    <div class="body-content">
+
+    <div class="section" id="s-story">
       <div class="section-label">The Human Story</div>
       <h2 class="section-h">He spent 20 years watching the problem.<br>Then he stopped watching.</h2>
       <p class="story-p">Suman Akkisetty grew up in a small town in India. Computers were just another subject on the timetable. But something happened in grade 12 when he first saw a machine respond to code he typed. He couldn't explain it. He just knew he wanted more of that feeling.</p>
@@ -171,7 +202,7 @@ body{min-height:100vh;overflow-x:hidden}
       <cite>Suman Akkisetty,<br>Builder and Architect</cite>
     </div>
 
-    <div class="section">
+    <div class="section" id="s-setup">
       <div class="section-label">The Setup</div>
       <h2 class="section-h">The desk was never required.</h2>
       <p class="story-p">He didn't set out to build software without a proper workstation. It just turned out that way. The laptop was there when it was there. But a lot of the time it wasn't, and waiting for it to be there wasn't something he was willing to do.</p>
@@ -239,7 +270,7 @@ body{min-height:100vh;overflow-x:hidden}
       </div>
     </div>
 
-    <div class="section">
+    <div class="section" id="s-shift">
       <div class="section-label">The Inflection Point</div>
       <h2 class="section-h">18x faster. Overnight.</h2>
       <p class="story-p">The first four months were slow. Local machine, standard setup, 53 commits across November through February. Real progress, but grinding.</p>
@@ -276,7 +307,40 @@ body{min-height:100vh;overflow-x:hidden}
       <cite>Suman Akkisetty</cite>
     </div>
 
-    <div class="section">
+    <!-- The Hours (before Numbers) -->
+    <div class="section" id="s-hours">
+      <div class="section-label">The Hours</div>
+      <h2 class="section-h">This was built at night.</h2>
+      <p class="story-p">Suman held a full-time job throughout the entire build. Every commit in this repository was pushed in the evenings, through the night, and across weekends. The working day belonged to someone else. There was no sabbatical. No runway. No "building full-time." Just the hours that were left over, used completely.</p>
+
+      <div class="night-stats">
+        <div class="ns-card">
+          <div class="ns-num">71</div>
+          <div class="ns-lbl">Nights past midnight</div>
+        </div>
+        <div class="ns-card">
+          <div class="ns-num">35</div>
+          <div class="ns-lbl">Consecutive days: longest streak</div>
+        </div>
+        <div class="ns-card">
+          <div class="ns-num">531</div>
+          <div class="ns-lbl">Commits after midnight</div>
+        </div>
+        <div class="ns-card">
+          <div class="ns-num">498</div>
+          <div class="ns-lbl">Weekend commits (Mar to May: no weekend missed)</div>
+        </div>
+      </div>
+
+      <div class="hours-highlight">
+        <strong>3am was the most productive hour of the build.</strong> 196 commits were pushed between 3am and 4am: the hour when the house was quiet, the phone was silent, and the only thing left to do was write code. On 67 separate nights, the last commit was logged somewhere between 1am and 4am.
+      </div>
+
+      <p class="story-p">March 17 to April 20, 2026: 35 days without missing a single day of commits. From March onwards, not a single weekend was skipped. Every Saturday and Sunday through to launch had code shipped. A full-time job during the day. A platform being built at night. No grand plan. Just what happens when the problem matters enough.</p>
+    </div>
+
+    <!-- The Numbers -->
+    <div class="section" id="s-numbers">
       <div class="section-label">The Numbers</div>
       <h2 class="section-h">What 6 months actually looks like.</h2>
       <p class="story-p">A full production enterprise platform, built by one person on free cloud infrastructure, shipped from wherever he happened to be. Not a demo, not an MVP in the loose sense of the word. Production-grade and fully deployed.</p>
@@ -328,39 +392,8 @@ body{min-height:100vh;overflow-x:hidden}
       </div>
     </div>
 
-    <!-- The Hours -->
-    <div class="section" style="margin-top:48px">
-      <div class="section-label">The Hours</div>
-      <h2 class="section-h">This was built at night.</h2>
-      <p class="story-p">Suman held a full-time job throughout the entire build. Every commit in this repository was pushed in the evenings, through the night, and across weekends — while the working day belonged to someone else. There was no sabbatical. No runway. No "building full-time." Just the hours that were left over, used completely.</p>
-
-      <div class="night-stats">
-        <div class="ns-card">
-          <div class="ns-num">71</div>
-          <div class="ns-lbl">Nights past midnight</div>
-        </div>
-        <div class="ns-card">
-          <div class="ns-num">35</div>
-          <div class="ns-lbl">Consecutive days — longest streak</div>
-        </div>
-        <div class="ns-card">
-          <div class="ns-num">531</div>
-          <div class="ns-lbl">Commits after midnight</div>
-        </div>
-        <div class="ns-card">
-          <div class="ns-num">498</div>
-          <div class="ns-lbl">Weekend commits</div>
-        </div>
-      </div>
-
-      <div class="hours-highlight">
-        <strong>3am was the most productive hour of the build.</strong> 196 commits were pushed between 3am and 4am — the time when the house was quiet, the phone was silent, and the only thing left to do was write code. On 67 separate nights, the last commit was logged somewhere between 1am and 4am.
-      </div>
-
-      <p class="story-p">March 17 to April 20, 2026: 35 days without missing a single day of commits. From March onwards, not a single weekend was skipped — every Saturday and Sunday through to launch had code shipped. A full-time job during the day. A platform being built at night. The streak was not planned — it was just what happened when the problem mattered enough.</p>
-    </div>
-
-  </div>
+    </div><!-- end body-content -->
+  </div><!-- end body -->
 
   <div class="story-cta-divider"></div>
   <div class="story-cta">
@@ -421,6 +454,30 @@ function toggleTheme(){
   clearTimeout(_themeTimer);
   _themeTimer=setTimeout(()=>root.classList.remove('theme-transitioning'),550);
 }
+</script>
+<script>
+(function(){
+  var links=document.querySelectorAll('.body-sidebar .sidebar-link[href^="#"]');
+  if(!links.length)return;
+  var active=null;
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var link=document.querySelector('.body-sidebar .sidebar-link[href="#'+e.target.id+'"]');
+      if(!link)return;
+      if(e.isIntersecting){
+        if(active)active.classList.remove('active');
+        link.classList.add('active');
+        active=link;
+      }
+    });
+  },{rootMargin:'-60px 0px -60% 0px',threshold:0.01});
+  links.forEach(function(l){
+    var id=l.getAttribute('href').slice(1);
+    var el=document.getElementById(id);
+    if(el)observer.observe(el);
+  });
+  if(links.length)links[0].classList.add('active');
+})();
 </script>
 </body>
 </html>
