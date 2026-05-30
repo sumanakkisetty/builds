@@ -492,9 +492,9 @@ function toggleTheme(){
 })();
 </script>
 <script>
-fetch('https://api.countapi.xyz/hit/sumanakkisetty/ws-story')
+fetch('https://ws-story-counter.sumanakkisetty.workers.dev?page=ws-story')
   .then(function(r){return r.json();})
-  .then(function(d){var e=document.getElementById('vc');if(e&&d.value)e.textContent=d.value.toLocaleString()+' visits';})
+  .then(function(d){var e=document.getElementById('vc');if(e&&d.count)e.textContent=d.count.toLocaleString()+' visits';})
   .catch(function(){});
 </script>
 </body>
