@@ -651,6 +651,35 @@
 
   @media (max-width: 767px) { .header-title { display: none; } }
 
+  /* ══ PREV / NEXT NAV ══ */
+  .pill-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .pill-nav-btn {
+    display: flex; align-items: center; gap: 6px;
+    padding: 10px 18px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface2);
+    color: var(--text);
+    font-size: 13px; font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: background .15s, border-color .15s;
+    white-space: nowrap;
+  }
+  .pill-nav-btn:hover { background: var(--surface); border-color: var(--accent-az); color: var(--accent-az); }
+  .pill-nav-btn:disabled { opacity: .35; cursor: default; pointer-events: none; }
+  .pill-nav-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .pill-nav-label { font-size: 12px; color: var(--text3); text-align: center; }
+  html[data-theme="dark"] .pill-nav-btn { background: var(--surface2); }
+
   /* ══ SEARCH OVERLAY ══ */
   .search-overlay {
     display: none;
@@ -4240,6 +4269,28 @@ function showDetail(key, el) {
     html += '</div>';
   }
 
+  // ── prev/next nav ──
+  const allKeys = getAllPillKeys();
+  const idx = allKeys.indexOf(key);
+  const prevKey = idx > 0 ? allKeys[idx - 1] : null;
+  const nextKey = idx < allKeys.length - 1 ? allKeys[idx + 1] : null;
+  const prevTitle = prevKey ? (DETAILS[prevKey] ? DETAILS[prevKey].title : prevKey) : '';
+  const nextTitle = nextKey ? (DETAILS[nextKey] ? DETAILS[nextKey].title : nextKey) : '';
+
+  html += `
+    <div class="pill-nav">
+      <button class="pill-nav-btn" onclick="showDetail('${prevKey}')" ${!prevKey ? 'disabled' : ''}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        ${prevTitle || 'Previous'}
+      </button>
+      <span class="pill-nav-label">${idx + 1} / ${allKeys.length}</span>
+      <button class="pill-nav-btn" onclick="showDetail('${nextKey}')" ${!nextKey ? 'disabled' : ''}>
+        ${nextTitle || 'Next'}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  `;
+
   panel.innerHTML = html;
   closeDrawer();
   document.getElementById('right-panel').scrollTo({ top: 0, behavior: 'smooth' });
@@ -4276,6 +4327,16 @@ function showDetail(key, el) {
     document.removeEventListener('mouseup', onMouseUp);
   }
 })();
+
+// ══ PILL ORDER ══
+function getAllPillKeys() {
+  const keys = [];
+  document.querySelectorAll('#drawer-pills .pill').forEach(function(p) {
+    const m = p.getAttribute('onclick').match(/showDetail\('([^']+)'\)/);
+    if (m) keys.push(m[1]);
+  });
+  return keys;
+}
 
 // ══ SEARCH ══
 function openSearch() {
