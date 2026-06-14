@@ -1122,6 +1122,9 @@
           <span class="pill" style="background:#e8f1fc;border-color:#aaccf5;color:#0c447c" onclick="showDetail('cs-knowledge')">Knowledge Sources</span>
           <span class="pill" style="background:#e8f1fc;border-color:#aaccf5;color:#0c447c" onclick="showDetail('cs-actions')">Actions &amp; Workflows</span>
           <span class="pill" style="background:#e8f1fc;border-color:#aaccf5;color:#0c447c" onclick="showDetail('cs-channels')">Publishing Channels</span>
+          <span class="pill" style="background:#e8f1fc;border-color:#aaccf5;color:#0c447c" onclick="showDetail('cs-variables-entities')">Variables &amp; Entities</span>
+          <span class="pill" style="background:#e8f1fc;border-color:#aaccf5;color:#0c447c" onclick="showDetail('cs-human-handoff')">Human Handoff &amp; Escalation</span>
+          <span class="pill" style="background:#e8f1fc;border-color:#aaccf5;color:#0c447c" onclick="showDetail('cs-proactive-messaging')">Proactive Messaging</span>
         </div>
       </div>
 
@@ -1184,6 +1187,7 @@
           <span class="pill" style="background:#eeedfd;border-color:#c5c1f5;color:#3c3489" onclick="showDetail('cs-power-automate')">Power Automate Integration</span>
           <span class="pill" style="background:#eeedfd;border-color:#c5c1f5;color:#3c3489" onclick="showDetail('cs-ai-models')">AI Models &amp; GPT-5</span>
           <span class="pill" style="background:#eeedfd;border-color:#c5c1f5;color:#3c3489" onclick="showDetail('cs-mcp-connectors')">MCP &amp; Open Connectors</span>
+          <span class="pill" style="background:#eeedfd;border-color:#c5c1f5;color:#3c3489" onclick="showDetail('cs-connector-ecosystem')">Connector Ecosystem</span>
         </div>
       </div>
 
@@ -1191,8 +1195,10 @@
         <div class="row-label">Delivery & security</div>
         <div class="pill-group">
           <span class="pill" style="background:#fef3dc;border-color:#f5cc72;color:#633806" onclick="showDetail('cs-testing-quality')">Testing &amp; Quality</span>
+          <span class="pill" style="background:#fef3dc;border-color:#f5cc72;color:#633806" onclick="showDetail('cs-studio-kit')">Copilot Studio Testing Kit</span>
           <span class="pill" style="background:#fef3dc;border-color:#f5cc72;color:#633806" onclick="showDetail('cs-environments-alm')">Environments &amp; ALM</span>
           <span class="pill" style="background:#fef3dc;border-color:#f5cc72;color:#633806" onclick="showDetail('cs-security-auth')">Security &amp; Authentication</span>
+          <span class="pill" style="background:#fef3dc;border-color:#f5cc72;color:#633806" onclick="showDetail('cs-agent-analytics')">Agent Analytics Dashboard</span>
         </div>
       </div>
 
@@ -4000,6 +4006,133 @@ const DETAILS = {
   }
 
 ,
+
+  'cs-variables-entities': {
+    title: 'Variables & Entities', badge: 'Core Concept', badgeColor: '#e8f1fc', badgeTxt: '#0c447c',
+    summary: 'Variables store information during a conversation so the agent can remember and reuse it. Entities help the agent extract and recognize structured data from what the user types — like dates, numbers, email addresses, or custom lists. Together they make conversations feel intelligent and context-aware.',
+    kvs: [
+      ['Conversation variable','Exists only for the current session — cleared when conversation ends'],
+      ['Global variable','Persists across sessions — use for user preferences or org settings'],
+      ['Power Fx variable','Computed using Power Fx expressions — dynamic derived values'],
+      ['Prebuilt entities','Date/time, number, email, phone, currency, temperature — recognized automatically'],
+      ['Custom entities','Your own lists (e.g., Department names, Product SKUs, Policy types)'],
+      ['Slot filling','Agent asks follow-up questions to collect missing required entity values']
+    ],
+    deep: [
+      {h:'Why variables matter in interviews', b:'Interviewers test whether you know how agents maintain context. Without variables, every agent message is stateless. With them, you can collect a name once and use it throughout — "Thanks Sarah, let me pull up your account."'},
+      {h:'Entity extraction flow', b:'User says "I want to book leave for next Thursday" → entity recognizer extracts date "next Thursday" → resolves to 2026-06-18 → stores in @LeaveDate variable → agent confirms "You want leave on 18 June, is that right?"'},
+      {h:'Product Owner angle', b:'When writing topic user stories, specify which variables the topic must collect and which entities must be recognized. This is acceptance criteria — "agent must correctly extract date from 95% of leave request phrases" is a testable requirement.'},
+      {h:'Scoping rule', b:'Use conversation variables by default. Only promote to global if the value genuinely needs to persist between separate sessions — e.g., user language preference or account tier. Overuse of global variables creates data residency and privacy compliance questions.'}
+    ],
+    tip: '"Variables are memory, entities are perception" — the agent perceives structured data via entities and remembers it via variables. Use this framing in interviews to show conceptual clarity.',
+    ol: '"We map variables and entities as part of topic design — each topic user story includes a data contract: what entities must be extracted, what variables must be set by the end of the topic, and how downstream topics consume them."'
+  },
+
+  'cs-human-handoff': {
+    title: 'Human Handoff & Escalation', badge: 'Core Concept', badgeColor: '#e8f1fc', badgeTxt: '#0c447c',
+    summary: 'Human handoff is the mechanism that transfers a conversation from a Copilot Studio agent to a live human agent when the AI cannot resolve the request. Every production agent must have a defined escalation path — an agent without handoff is a dead end for users with complex needs.',
+    kvs: [
+      ['Trigger','User requests human help, agent hits Fallback topic, or business rule escalates'],
+      ['Omnichannel for CS','Microsoft\'s primary live agent platform — deep Copilot Studio integration'],
+      ['Genesys / Salesforce','Third-party contact center platforms supported via escalation connectors'],
+      ['Context transfer','Full conversation transcript and variables passed to human agent at handoff'],
+      ['System topic','Built-in "Escalate" system topic handles the handoff flow — customisable'],
+      ['Fallback topic','Triggered when no topic matches — should always offer human handoff as exit']
+    ],
+    deep: [
+      {h:'Why this is always asked in interviews', b:'It\'s a production readiness signal. Anyone who has shipped an agent knows users will always find edge cases the agent can\'t handle. If you don\'t have an answer to "what happens when the agent doesn\'t know the answer?", you haven\'t thought through the full lifecycle.'},
+      {h:'The three escalation triggers', b:'(1) User explicitly asks — "I want to talk to a person." (2) Fallback topic fires — agent couldn\'t match any topic after 2-3 attempts. (3) Business rule — e.g., if complaint severity = high, always escalate. Design for all three.'},
+      {h:'Context handoff is critical', b:'When transferring to a live agent, pass the full conversation transcript plus key variables (user name, account ID, issue category, sentiment score). A human agent picking up mid-conversation with zero context is a poor experience — the entire value of the AI pre-conversation is lost.'},
+      {h:'McKesson context', b:'In healthcare, escalation paths are compliance requirements for certain query types. Any conversation touching clinical information, patient safety, or regulatory matters should have a mandatory escalation rule — not just a user-triggered one. Build this into the governance checklist.'}
+    ],
+    tip: 'In any agent design discussion, proactively raise escalation before the interviewer asks. It signals maturity. Say: "The first thing I define before building any topic is the exit — what does the agent do when it cannot help?"',
+    ol: '"Every agent we ship has three guaranteed exits: the answer it found, the workflow it completed, or the human it handed off to. No agent is a dead end. The Fallback topic is always the last line of defence with a clean handoff to a live agent."'
+  },
+
+  'cs-proactive-messaging': {
+    title: 'Proactive Messaging', badge: 'Core Concept', badgeColor: '#e8f1fc', badgeTxt: '#0c447c',
+    summary: 'Proactive messaging enables agents to initiate conversations with users — sending alerts, reminders, or notifications without the user asking first. This shifts agents from reactive (answer when asked) to proactive (reach out when something matters). Proactive agents deliver significantly higher business value than reactive-only agents.',
+    kvs: [
+      ['Teams channel','Most common proactive target — agent sends card or message to user in Teams'],
+      ['Trigger','Power Automate flow fires agent message based on event (system alert, schedule, threshold)'],
+      ['Personalization','Message tailored per user using variables — name, account data, relevant context'],
+      ['Opt-in required','Users must install/consent to agent before it can proactively message them'],
+      ['Adaptive Cards','Rich proactive messages use Adaptive Cards with action buttons for immediate response'],
+      ['Use cases','Renewal reminders, approval notifications, compliance alerts, shift schedule changes']
+    ],
+    deep: [
+      {h:'Reactive vs Proactive agents', b:'A reactive agent waits for the user to ask. A proactive agent monitors systems and pushes relevant information at the right moment. Example: instead of "ask the agent if your order shipped", the agent messages you when it detects the shipment. This is the evolution from chatbot to digital colleague.'},
+      {h:'How it works technically', b:'Power Automate detects a trigger event (record updated, threshold breached, scheduled time) → calls a Copilot Studio connector or sends a Teams message via Graph API → message includes context and an action button that opens a conversation with the agent for follow-up.'},
+      {h:'Product Owner angle', b:'Proactive messaging use cases belong on your roadmap once the reactive (Q&A + action) version of an agent is proven. They require more governance — opt-in consent management, frequency capping to avoid notification fatigue, and clear unsubscribe paths.'},
+      {h:'McKesson examples', b:'Compliance renewal alert → "Your DEA registration expires in 30 days — click here to start renewal via the agent." Approval notification → "A purchase order over $50K is awaiting your approval — tap Approve or Review." Shift change → "Your scheduled shift on Friday has changed — the agent has the details."'}
+    ],
+    tip: 'Mention proactive messaging when asked about agent ROI or advanced use cases. Most candidates only talk about reactive agents — proactive capability immediately differentiates your answer.',
+    ol: '"The jump from a reactive to a proactive agent is where the real productivity multiplier is. Instead of employees remembering to ask, the agent surfaces the right information at the right moment — that is the difference between a helpful tool and a genuine digital workforce."'
+  },
+
+  'cs-connector-ecosystem': {
+    title: 'Connector Ecosystem', badge: 'How It Works', badgeColor: '#eeedfd', badgeTxt: '#3c3489',
+    summary: 'Connectors are the integration layer that connects Copilot Studio agents to external systems — M365, Dynamics 365, Salesforce, ServiceNow, SAP, and 900+ others. Understanding connector types and their licensing implications is essential for cost planning and governance in enterprise deployments.',
+    kvs: [
+      ['Standard connectors','Included in base Power Platform license — M365, SharePoint, OneDrive, Teams, Outlook'],
+      ['Premium connectors','Require Power Automate Premium license — Salesforce, ServiceNow, SAP, SQL Server'],
+      ['Custom connectors','REST/SOAP API wrapped in OpenAPI spec — connect any system with an API'],
+      ['MCP connectors','Model Context Protocol — open standard for third-party AI tool integration (2026)'],
+      ['On-premises gateway','Connects Power Platform to on-premises systems behind the firewall'],
+      ['Certified connectors','Microsoft-validated third-party connectors — guaranteed reliability and support']
+    ],
+    deep: [
+      {h:'Standard vs Premium — the cost trap', b:'Many enterprise agents require Premium connectors (ServiceNow for IT triage, SAP for procurement, SQL Server for data queries). Each user who interacts with an agent that uses a Premium connector needs a Power Automate Premium license ($15/user/month). This must be in your business case — failure to account for it causes budget surprises post-launch.'},
+      {h:'Custom connectors — when you need them', b:'If your system has a REST API but no pre-built connector, build a custom connector using the OpenAPI (Swagger) spec. Common enterprise scenario: legacy internal system, proprietary healthcare platform, or a vendor API that predates the connector catalog. Custom connectors require Power Apps Premium or Power Automate Premium.'},
+      {h:'MCP connectors (2026)', b:'Model Context Protocol (MCP) is the emerging open standard for connecting AI agents to tools and data sources — similar to how USB-C standardised physical connections. Copilot Studio supports MCP connectors from 2026, enabling third-party AI tools (GitHub Copilot, Anthropic, etc.) to integrate as agent actions without bespoke connector builds.'},
+      {h:'Product Owner checklist', b:'For every agent action: (1) Which connector does it require? (2) Is it Standard or Premium? (3) How many users will trigger it? (4) What is the monthly connector license cost? (5) Is there a DLP policy restriction on this connector in our tenant? Answer these before development starts.'}
+    ],
+    tip: 'The Standard vs Premium connector distinction is a common trap in interviews and in real projects. Show you know it by raising it proactively: "The first thing I check when scoping an agent action is whether the connector is Standard or Premium — it drives the per-user license cost."',
+    ol: '"Our connector strategy is Standard-first — we design agent actions around Standard connectors wherever possible to avoid per-user Premium license costs. When Premium is unavoidable, we scope the rollout carefully and include connector licensing in the business case from day one."'
+  },
+
+  'cs-studio-kit': {
+    title: 'Copilot Studio Testing Kit', badge: 'Delivery', badgeColor: '#fef3dc', badgeTxt: '#633806',
+    summary: 'The Copilot Studio Kit (open-source, GitHub) is the structured testing framework for validating agent quality before production. It runs automated conversation test suites, scores AI responses against a defined rubric, and generates pass/fail reports. Every enterprise agent deployment should use it — it is the difference between "we clicked around in the test panel" and production-grade quality assurance.',
+    kvs: [
+      ['Source','Open-source — github.com/microsoft/CopilotStudioSamples (Kit folder)'],
+      ['Built on','Power Apps + Power Automate — runs in your Power Platform environment'],
+      ['Test types','Single-turn Q&A, multi-turn conversation, action trigger verification'],
+      ['Scoring','AI-powered response evaluator scores answers against your rubric (0–100)'],
+      ['Rubric fields','Accuracy, Completeness, Tone, Groundedness, Relevance'],
+      ['Output','Pass/fail report per test case, overall agent score, conversation transcript']
+    ],
+    deep: [
+      {h:'How it works', b:'You define a test dataset: a spreadsheet of test utterances and expected responses. The Kit sends each utterance to your agent, captures the response, runs it through an AI evaluator that scores against your rubric, and returns a structured report. You set a threshold (e.g., 80/100) — anything below fails the release gate.'},
+      {h:'Integration with ALM', b:'The Kit connects to Power Platform pipelines. In a mature ALM setup, the Kit runs automatically when a new agent version is promoted from Test to Production environment. If the score drops below threshold, the promotion is blocked — same principle as unit tests blocking a CI/CD pipeline.'},
+      {h:'Rubric design is a Product Owner responsibility', b:'The rubric defines what "good" means for your agent. For a compliance Q&A agent, Accuracy and Groundedness are highest weight. For an onboarding agent, Tone and Completeness matter more. You define the rubric in the user story acceptance criteria — the Kit enforces it mechanically.'},
+      {h:'What to say in interviews', b:'"We use the Copilot Studio Kit to automate quality validation. Every agent has a defined test dataset and a rubric. Nothing goes to production without meeting the rubric threshold. The Kit generates a report we include in the sprint review — it is our Definition of Done artefact for AI quality."'}
+    ],
+    tip: 'Most candidates have never heard of the Copilot Studio Kit. Knowing it exists and how it works will immediately differentiate you as someone who has thought about production-quality AI delivery, not just prototyping.',
+    ol: '"The Copilot Studio Kit is our AI quality gate — the equivalent of unit tests for agents. We define the rubric, build the test dataset alongside the agent backlog, and the Kit runs automated validation before every production deployment."'
+  },
+
+  'cs-agent-analytics': {
+    title: 'Agent Analytics Dashboard', badge: 'Delivery', badgeColor: '#fef3dc', badgeTxt: '#633806',
+    summary: 'Copilot Studio has a built-in analytics dashboard that shows how your agent is performing in production. As Product Owner, this is your primary post-launch feedback loop — it tells you what users are asking, where conversations are failing, what topics need improvement, and whether your adoption KPIs are being met.',
+    kvs: [
+      ['Sessions','Total conversations initiated — your primary adoption metric'],
+      ['Engagement rate','% of sessions where user asked more than one question'],
+      ['Resolution rate','% of sessions resolved by the agent without escalation'],
+      ['Escalation rate','% of sessions handed off to a human — inverse of resolution rate'],
+      ['CSAT','User satisfaction score (1-5 stars) — shown if feedback prompt is enabled'],
+      ['Unrecognized utterances','Questions the agent couldn\'t match — your backlog input for new topics']
+    ],
+    deep: [
+      {h:'The most important metric: Unrecognized Utterances', b:'The unrecognized utterances report shows exactly what users asked that the agent could not handle. This is your highest-value backlog input — real user needs that the agent is currently failing. Review this weekly and convert top entries into new topics or knowledge source updates.'},
+      {h:'Resolution rate vs Deflection rate', b:'Resolution rate = sessions the agent fully handled. Deflection rate (used in business cases) = conversations that did NOT require a human — includes both resolutions and self-service exits. Deflection rate is always higher. Know both terms and which one to use when presenting to finance vs operations.'},
+      {h:'90-day launch review', b:'For every new agent, run a 90-day post-launch review using the analytics dashboard. Report: total sessions, resolution rate (target 65%+), top 5 resolved topics, top 5 escalation triggers, CSAT trend, and a backlog of 10 topics to add based on unrecognized utterances. Present this in the quarterly business review.'},
+      {h:'Enhanced reports (June 2026)', b:'The June 2026 dashboard update now includes autonomous agent analytics, time-saved estimates, cost savings calculations, and topic-level impact scores — all in one view. This is now your executive-ready AI portfolio report, not just a usage dashboard.'},
+      {h:'Power BI integration', b:'For enterprise-scale reporting (multiple agents, cross-tenant), export Copilot Studio analytics to Power BI via Dataverse. Build a unified AI ROI dashboard across all agents. This is the artefact for a quarterly executive briefing at Fortune 10 scale.'}
+    ],
+    tip: 'When asked "how do you measure agent success?" — lead with the dashboard metrics, then go deeper on unrecognized utterances as your continuous improvement engine. This shows you think about post-launch, not just build.',
+    ol: '"Our agent success loop is: launch → measure (resolution rate, CSAT, unrecognized utterances) → prioritize backlog → ship new topics → remeasure. The analytics dashboard makes this loop data-driven. We report resolution rate and CSAT to stakeholders monthly and review unrecognized utterances weekly."'
+  },
 
   'cs-latest-updates': {
     title: 'Latest Updates — 2026', badge: 'Current Affairs', badgeColor: '#eaf4e0', badgeTxt: '#27500a',
